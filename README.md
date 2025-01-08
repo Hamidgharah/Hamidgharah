@@ -65,3 +65,22 @@ while True:
             access_camera()
         else:
             speak("متوجه نشدم، لطفاً دوباره بگید.")
+import cv2
+
+cap = cv2.VideoCapture(0)
+while True:
+    ret, frame = cap.read()
+    cv2.imshow('Camera', frame)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+cap.release()
+cv2.destroyAllWindows()
+import pyttsx3
+
+engine = pyttsx3.init()
+engine.say("سلام! چطور می‌تونم کمکتون کنم؟")
+engine.runAndWait()
+python -m venv myenv
+source myenv/bin/activate  # در ویندوز:
+myenv\Scripts\activate
+pip install opencv-python-headless speechrecognition pyttsx3 geopy
