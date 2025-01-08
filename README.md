@@ -15,15 +15,12 @@ import speech_recognition as sr
 import pyttsx3
 from geopy.geocoders import Nominatim
 
-# تنظیم موتور تبدیل متن به گفتار
 engine = pyttsx3.init()
 
-# ایجاد تابع برای تبدیل متن به گفتار
 def speak(text):
     engine.say(text)
     engine.runAndWait()
 
-# ایجاد تابع برای تشخیص گفتار
 def recognize_speech():
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
@@ -37,13 +34,11 @@ def recognize_speech():
             print("متوجه نشدم، لطفاً دوباره تکرار کنید.")
             return None
 
-# تابع برای دسترسی به مکان
 def get_location():
     geolocator = Nominatim(user_agent="geoapiExercises")
     location = geolocator.geocode("Tehran, Iran")
     return location.address
 
-# تابع برای دسترسی به دوربین
 def access_camera():
     cap = cv2.VideoCapture(0)
     while True:
@@ -54,7 +49,6 @@ def access_camera():
     cap.release()
     cv2.destroyAllWindows()
 
-# حلقه اصلی برای دریافت و پاسخ به گفتار
 while True:
     text = recognize_speech()
     if text:
